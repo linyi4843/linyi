@@ -1,6 +1,8 @@
 package com.manguo.fun.linyi.ly.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.manguo.fun.linyi.ly.entity.User;
 import com.manguo.fun.linyi.ly.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +26,7 @@ public class UserController {
     @RequestMapping("/hello")
     public Object getHello(){
 
-        return service.getById(1);
+        return service.getOne(new QueryWrapper<>(User.builder().id(1).build()));
     }
 
 }

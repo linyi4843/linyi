@@ -1,4 +1,4 @@
-package com.manguo.fun.linyi.ly.controller;
+package com.manguo.fun.linyi.ly;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
