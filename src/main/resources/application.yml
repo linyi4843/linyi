@@ -1,0 +1,13 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    url: jdbc:mysql://yunfuoffice.f3322.net:13058/xinxiaoche_new?characterEncoding=utf-8
+    name: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
