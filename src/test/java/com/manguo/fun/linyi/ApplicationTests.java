@@ -1,5 +1,7 @@
 package com.manguo.fun.linyi;
 
+import com.manguo.fun.linyi.ly.Application;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +12,11 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@Slf4j
+@SpringBootTest(classes = Application.class)
 public class ApplicationTests {
 
-    @Autowired
-    private DataSource dataSource;
-
     @Test
-    public void contextLoads() throws SQLException {
-        System.out.println(dataSource.getConnection());
+    public void test() {
     }
-
 }
