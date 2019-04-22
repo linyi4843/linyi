@@ -32,11 +32,11 @@ public class PdfUtils {
             bos = new ByteArrayOutputStream();
             stamper = new PdfStamper(reader, bos);
             AcroFields form = stamper.getAcroFields();
-            String[] str = { "你", "你也是一个靓仔啊"};
+            String[] str = {"你", "你也是一个靓仔啊"};
             int i = 0;
-            BaseFont bf = BaseFont.createFont("STSong-Light","UniGB-UCS2-H",BaseFont.NOT_EMBEDDED);
+            BaseFont bf = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
             for (String s : form.getFields().keySet()) {
-                form.setFieldProperty(s,"textfont",bf,null);
+                form.setFieldProperty(s, "textfont", bf, null);
                 form.setField(s, str[i++]);
             }
             stamper.setFormFlattening(true);// 如果为false那么生成的PDF文件还能编辑，一定要设为true
@@ -53,6 +53,8 @@ public class PdfUtils {
             System.out.println(2);
         }
     }
+
+
     public static void main(String[] args) {
         fillTemplate();
     }
