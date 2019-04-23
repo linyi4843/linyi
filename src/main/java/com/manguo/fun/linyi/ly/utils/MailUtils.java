@@ -1,6 +1,5 @@
 package com.manguo.fun.linyi.ly.utils;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.mail.DataSourceResolver;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.ImageHtmlEmail;
@@ -11,7 +10,6 @@ import org.apache.commons.mail.resolver.DataSourceUrlResolver;
 import java.net.URL;
 
 
-@Slf4j
 public class MailUtils {
     //收件人
     private static final String TO = "omgsmlz@126.com";
@@ -22,7 +20,7 @@ public class MailUtils {
     //发件人用户名
     private static final String USER_NAME = "867745320@qq.com";
     //发件人授权密码
-    private static final String PWD = "mfinejmqvetpbffg";
+    private static final String PWD = "cmfinejmqvetpbffgd";
     //邮件标题
     private static final String TITLE = "你号没了";
 
@@ -58,13 +56,12 @@ public class MailUtils {
             email.setTextMsg("你的邮箱客户端不支持HTML格式邮件");
             email.send();
         } catch (Exception e) {
-            log.error("银行邮件发送失败");
+            System.out.println(222);
         }
     }
 
     public static void main(String[] args) {
         String[] arr = {"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555673149454&di=95dbe50f75af52d7c92db957330dcaa6&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201804%2F21%2F20180421163232_JvceQ.jpeg",
                 "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555673226599&di=80b0bb248a9614cf2d595afa6ad69d1f&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201805%2F24%2F20180524130347_fkxwv.jpg"};
-
     }
 }
