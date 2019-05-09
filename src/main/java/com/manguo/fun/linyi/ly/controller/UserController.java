@@ -28,9 +28,7 @@ public class UserController {
     @RequestMapping("/hello")
     public Object getHello(){
         String logg = "555";
-        log.debug("我是一只小小小小草 -> {}",logg);
         log.info("我是一只小小小小鸟 ->{}" ,logg);
-        log.error("我是一只小小小小猪 -> {}" , logg);
         return service.getOne(new QueryWrapper<>(User.builder().id(1).build()));
     }
 
