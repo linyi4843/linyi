@@ -13,6 +13,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 /**
@@ -41,6 +42,19 @@ public class LogRecordAspect {
         HttpServletRequest request = sra.getRequest();
         long startTime = System.currentTimeMillis();
         request.setAttribute("startTime", startTime);
+        String queryString = request.getQueryString();
+        String method = request.getMethod();
+        String uri = request.getRequestURI();
+        Object[] args = pjp.getArgs();
+        String params = "";
+        try {
+            params = getParams(args, method, params, queryString);
+            log.info(" \n request : \n ip -> {}  \n requestMethod -> {}, \n url -> {} \n params -> {}", IpUtils.getIpAddr(request), method, uri, params);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            log.error("log error !!", e);
+        }
+
     }
 
     // 通知（环绕）
@@ -63,16 +77,8 @@ public class LogRecordAspect {
         try {
             long startTime = (long) request.getAttribute("startTime");
             //获取请求参数集合并进行遍历拼接
-            if (args.length > 0) {
-                if ("POST".equals(method)) {
-                    Object object = args[0];
-                    params = JSON.toJSONString(object, SerializerFeature.WriteMapNullValue);
-                } else if ("GET".equals(method)) {
-                    params = queryString;
-                }
-                params = URLDecoder.decode(params, UTF_8);
-            }
-            log.info("ip:{} , requestMethod:{},url:{},params:{},responseBody:{},elapsed:{}ms.", IpUtils.getIpAddr(request), method, uri, params,
+            params = getParams(args, method, params, queryString);
+            log.info("\n response : \n ip -> {}, \n requestMethod -> {}, \n url -> {}, \n params -> {}, \n responseBody -> {}, \n elapsed -> {}ms.", IpUtils.getIpAddr(request), method, uri, params,
                     JSON.toJSONString(result, SerializerFeature.WriteMapNullValue), (endTime - startTime));
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,6 +87,18 @@ public class LogRecordAspect {
         return result;
     }
 
+    private String getParams(Object[] args, String method, String params, String queryString) throws UnsupportedEncodingException {
+        if (args.length > 0) {
+            if ("POST".equals(method)) {
+                Object object = args[0];
+                params = JSON.toJSONString(object, SerializerFeature.WriteMapNullValue);
+            } else if ("GET".equals(method)) {
+                params = queryString;
+            }
+            return URLDecoder.decode(params, UTF_8);
+        }
+        return "";
+    }
 
     //    执行切点之后
     @After("excudeService()")
