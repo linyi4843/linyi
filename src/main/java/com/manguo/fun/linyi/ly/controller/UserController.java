@@ -2,8 +2,8 @@ package com.manguo.fun.linyi.ly.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.manguo.fun.linyi.ly.common.LinYiException;
 import com.manguo.fun.linyi.ly.common.Result;
+import com.manguo.fun.linyi.ly.common.exception.LinYiException;
 import com.manguo.fun.linyi.ly.entity.User;
 import com.manguo.fun.linyi.ly.service.IUserService;
 import lombok.RequiredArgsConstructor;

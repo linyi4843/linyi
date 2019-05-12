@@ -1,4 +1,4 @@
-package com.manguo.fun.linyi.ly.common;
+package com.manguo.fun.linyi.ly.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
