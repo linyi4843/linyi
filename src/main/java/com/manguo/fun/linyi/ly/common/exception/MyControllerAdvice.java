@@ -1,6 +1,5 @@
 package com.manguo.fun.linyi.ly.common.exception;
 
-import com.manguo.fun.linyi.ly.common.LinYiException;
 import com.manguo.fun.linyi.ly.common.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
