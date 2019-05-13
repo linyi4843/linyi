@@ -5,10 +5,26 @@
     <property name="LOG_PATH" value="logs"/>
     <property name="APPDIR" value="app"/>
 
+    <!-- 控制台彩色打印 -->
+    <!-- magenta:洋红 -->
+    <!-- boldMagenta:粗红-->
+    <!-- cyan:青色 -->
+    <!-- white:白色 -->
+    <!-- highlight:蓝色 -->
+    <!-- boldYellow:浅黄色 -->
+    <!-- boldGreen:深黄色 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%date{yyyy-MM-dd HH:mm:ss} | %green(%-5level) | %cyan(%thread) | %magenta(%logger) | %msg%n">
+
+    </property>
+
     <!--控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread]%logger{56}.%method\(\):%L -%msg%n</Pattern>
+        </encoder>
+        <encoder charset="UTF-8">
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
         </encoder>
     </appender>
 
