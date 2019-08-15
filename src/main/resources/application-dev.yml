@@ -23,6 +23,11 @@ spring:
   transaction:
     rollback-on-commit-failure: true
 
+  redis:
+    host: 120.79.238.66
+    database: 1
+    port: 6379
+
 mybatis-plus:
   mapper-locations: classpath*:/mapper/ly/*Mapper.xml
   check-config-location: true
