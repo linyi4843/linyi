@@ -1,0 +1,29 @@
+import com.qiniu.common.QiniuException;
+import com.qiniu.http.Response;
+import com.qiniu.sms.SmsManager;
+import com.qiniu.util.Auth;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Create with IDEA
+ *
+ * @author linyi
+ * @date 2020-04-26
+ **/
+public class QiNiuUtil {
+    
+    public static void main(String[] args) throws QiniuException {
+        String ACCESS_KEY = "";
+        String SECRET_KEY = "";
+        Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
+
+        // 实例化一个SmsManager对象
+        SmsManager smsManager = new SmsManager(auth);
+        Map<String, String> map = new HashMap<>();
+        map.put("code","123457");
+        Response resp = smsManager.sendMessage("1254350155994370048", new String[] { "17638563205" }, map);
+        System.out.println(resp.bodyString());
+    }
+}
